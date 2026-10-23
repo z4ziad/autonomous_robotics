@@ -1,6 +1,6 @@
 # Student Session Guide: Collecting Vial-to-Rack Episodes
 
-Oct 19, 2026 · @Ziad
+Oct 19, 2026 · Ziad Youssfi
 
 One session is one team, at one station, recording either simulated or real episodes, from logging in to logging out. Every team uses the same account on a station; what tells your team's episodes apart from everyone else's is the part name you type in step 4 and the row you write in the session log in step 19. Follow the steps in order; each step is one thing to do. Steps 1 to 5 and 16 to 20 are the same for every session. In between, do steps **6 to 10 for a simulated session** or steps **11 to 15 for a real session**.
 

@@ -2,7 +2,7 @@
 
 # Vial-to-Rack Data Collection: Station Runbook and Merge Protocol
 
-Oct 8, 2026 · @Ziad
+Oct 8, 2026 · Ziad Youssfi
 
 This document explains how students record episodes for the vial-to-rack task, and how those recordings are combined into one class dataset. The main rule is simple: every episode, simulated or real, is recorded inside the workshop's Docker container. The separate LeRobot installation on the same PC is used afterwards, to check the recordings, combine them, and train policies.
 

@@ -1,6 +1,6 @@
 # Station Card: Vial-to-Rack Recording
 
-Oct 21, 2026 · @Ziad
+Oct 21, 2026 ·Ziad Youssfi
 
 One copy per station. The TA fills in the table at the top once; everything below it is the same at every station. Keep this open during every session. The step-by-step commands are in the student guide; this card is the checklist.
 
