@@ -1,6 +1,6 @@
 # Station Card: Vial-to-Rack Recording
 
-Oct 21, 2026 · @Ziad
+Oct 21, 2026 · Ziad Youssfi
 
 One copy per station. The TA fills in the table at the top once; everything below it is the same at every station. Keep this open during every session. The step-by-step commands are in the student guide; this card is the checklist.
 
@@ -8,15 +8,13 @@ One copy per station. The TA fills in the table at the top once; everything belo
 
 | Item | Value |
 | --- | --- |
-| Station letter | A / B / C |
+| Station letter | C |
 | PC account | `robotlab` (same on every station; password from the TA) |
-| Leader arm ID | `st_` `_teleop` |
-| Follower arm ID | `st_` `_robot` |
-| Leader port, follower port | `/dev/ttyACM_` , `/dev/ttyACM_` |
-| Gripper camera number, fixed camera number | `_` , `_` |
-| Session log | link |
-| TA on duty | name and how to reach them |
-| Steward (for uploaded parts) | name and how to reach them |
+| Leader arm ID | `stC_teleop` |
+| Follower arm ID | `stC_robot` |
+| Leader port, follower port | `/dev/ttyACM0` , `/dev/ttyACM1` |
+| Gripper camera number, fixed camera number | `2` , `0` |
+| Session log | [link](https://docs.google.com/spreadsheets/d/1Yh-T71ASylh94ZUB-DemJ7aDxTGWTZ57rfiZK28g5YE/edit?usp=sharing) |
 
 The ports and camera numbers are already saved on the PC; they are here so you can tell when something has changed.
 
