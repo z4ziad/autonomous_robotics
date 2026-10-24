@@ -12,7 +12,7 @@ One copy per station. The TA fills in the table at the top once; everything belo
 | PC account | `robotlab` (same on every station; password from the TA) |
 | Leader arm ID | `stC_teleop` |
 | Follower arm ID | `stC_robot` |
-| Leader port, follower port | `/dev/ttyACM0` , `/dev/ttyACM1` |
+| Leader port, follower port | `/dev/ttyACM1` , `/dev/ttyACM0` |
 | Gripper camera number, fixed camera number | `2` , `0` |
 | Session log | [link](https://docs.google.com/spreadsheets/d/1Yh-T71ASylh94ZUB-DemJ7aDxTGWTZ57rfiZK28g5YE/edit?usp=sharing) |
 
