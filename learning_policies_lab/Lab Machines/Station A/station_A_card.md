@@ -8,7 +8,7 @@ One copy per station. The TA fills in the table at the top once; everything belo
 
 | Item | Value |
 | --- | --- |
-| Station letter | A / B / C |
+| Station letter | A |
 | PC account | `robotlab` (same on every station; password from the TA) |
 | Leader arm ID | `stA_teleop` |
 | Follower arm ID | `stA_robot` |
