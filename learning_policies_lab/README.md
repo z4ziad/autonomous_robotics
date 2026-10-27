@@ -1,7 +1,6 @@
 <p align="center">
   <img src="assets/logo.png" alt="CMU ECE Autonomous Robotics logo" width="420">
 </p>
-
 <h1 align="center">Autonomous Robotics II</h1>
 
 <p align="center">
