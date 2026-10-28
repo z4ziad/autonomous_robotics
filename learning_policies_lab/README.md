@@ -18,4 +18,4 @@ The course examines three learning policy types:
 - **Generalizing:** We start from an LLM that has already learned from the Internet what things look like and what words mean, and attach the LLM to the robot's motors. Now the robot knows, for example, what a vial is before it has seen one, though it can still only move in ways it was shown.
 - **Rewarding:** We let the robot try the task, tell it when it succeeded, and let it improve from its own attempts.
 
-Today, the models for these robot learning policies are a hundred times smaller than just a couple of years ago. New robotic arms can be 3D printed to reduce cost. Thus, a team of students with a desktop PC can collect data, train open-source policies, and get real answers in a semester about which policies work best for which tasks.
+Today, the models for these robot learning policies are a hundred times smaller than just a couple of years ago. New robotic arms can be 3D printed to reduce cost. Thus, a team of students with a desktop PC can collect data, train open-source policies, and get real answers in a semester and find out which policies work best for which tasks.
