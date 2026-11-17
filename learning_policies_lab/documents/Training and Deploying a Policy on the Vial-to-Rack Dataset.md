@@ -39,7 +39,7 @@ hf auth whoami                      # must print a username; if not, run: hf aut
 Run the four lines mentioned above (”Before you start”), then the command below. Replace nothing in the command: the two `export` lines in "Before you start" supply the dataset name and the organization name. The first line of the command block sets RUN, the name of this training run: the word act\_ followed by the dataset name and the team, for example act\_vials\_real\_all\_t3. RUN names the output folder and the job, and the same name is used again in Steps 3 and 4. The command downloads the dataset into `~/.cache/huggingface/lerobot/` on the first run and reuses that copy afterward.
 
 ```bash
-export RUN=act_${DATASET}_${TEAM}      # sets RUN, the run name: act_ + dataset + team, e.g. act_vials_real_dry1_t3
+export RUN=act_${DATASET}_${TEAM}      # sets RUN, the run name: act_ + dataset + team, e.g. act_vials_all_v1_t3
 lerobot-train \
   --dataset.repo_id=${HF_ORG}/${DATASET} \
   --policy.type=act \
@@ -79,7 +79,7 @@ lerobot-train --config_path=${HOME}/vials/outputs/${RUN}/checkpoints/last/pretra
 Use this command in place of the ACT command in Step 1. Everything else in this guide is the same for both policies.
 
 ```bash
-export RUN=diffusion_${DATASET}_${TEAM}      # sets RUN, the run name: diffusion_ + dataset + team, e.g. diffusion_vials_real_dry1_t3
+export RUN=diffusion_${DATASET}_${TEAM}      # sets RUN, the run name: diffusion_ + dataset + team, e.g. diffusion_vials_all_v1_t3
 lerobot-train \
   --dataset.repo_id=${HF_ORG}/${DATASET} \
   --policy.type=diffusion \
@@ -120,7 +120,7 @@ pip install 'lerobot[smolvla]==0.6.1'
 **Train.** Run the five lines from "Before you start", then:
 
 ```bash
-export RUN=smolvla_${DATASET}_${TEAM}      # sets RUN, the run name: smolvla_ + dataset + team, e.g. smolvla_vials_real_dry1_t3
+export RUN=smolvla_${DATASET}_${TEAM}      # sets RUN, the run name: smolvla_ + dataset + team, e.g. smolvla_vials_all_v1_t3
 lerobot-train \
   --policy.path=lerobot/smolvla_base \
   --dataset.repo_id=${HF_ORG}/${DATASET} \
@@ -204,12 +204,12 @@ Do this on the station PC, logged in as `robotlab`, in a normal terminal on the 
 conda activate lerobot
 source ~/Sim-to-Real-SO-101-Workshop/docker/env
 # POLICY = where the trained policy is. Its name is the run name from Step 1 or Step 2:
-#   dry-run dataset, team 3:   act_vials_real_dry1_t3   (or diffusion_vials_real_dry1_t3)
+#   all dataset, team 3:   act_vials_all_v1_t3   (or diffusion_vials_all_v1_t3)
 #   final dataset, team 3:     act_vials_all_v1_t3      (or diffusion_vials_all_v1_t3)
 # Keep ONE of the three lines below and put your run name in it.
-export POLICY=${HOME}/vials/outputs/act_vials_real_dry1_t3/checkpoints/last/pretrained_model   # trained on this station
-# export POLICY=${HOME}/policies/act_vials_real_dry1_t3        # copied to this station (Step 3, option A)
-# export POLICY=autorobo/act_vials_real_dry1_t3                # pushed to the organization (Step 3, option B)
+export POLICY=${HOME}/vials/outputs/act_vials_all_v1_t3/checkpoints/last/pretrained_model   # trained on this station
+# export POLICY=${HOME}/policies/act_vials_rall_v1_t3        # copied to this station (Step 3, option A)
+# export POLICY=autorobo/act_vials_all_v1_t3                # pushed to the organization (Step 3, option B)
 lerobot-rollout --strategy.type=base \
   --policy.path=${POLICY} \
   --policy.device=cuda \
@@ -249,7 +249,7 @@ Judge a policy by how often it completes the task, not by its training loss. Use
 
 | Policy (run name) | Dataset | Checkpoint step | Station | Successes out of 10 | Typical failure | Date |
 | --- | --- | --- | --- | --- | --- | --- |
-| (example) act\_vials\_real\_dry1\_t0 | vials\_real\_dry1 | 2000 | A | 0 | (example) hovers above the vial, never closes the gripper | (example) |
+| (example) act\_vials\_all\_v1\_t0 | vials\_all\_v1 | 2000 | A | 0 | (example) hovers above the vial, never closes the gripper | (example) |
 |  |  |  |  |  |  |  |
 
 To compare stations, repeat the ten runs at a second station with the same checkpoint: the difference between stations shows how much the policy depends on one station's camera placement and calibration.
@@ -261,7 +261,7 @@ To compare stations, repeat the ten runs at a second station with the same check
 | The message | The cause | The fix |
 | --- | --- | --- |
 | `ValueError: 'repo_id' argument missing. Please specify it to push the model to the hub.` | `--policy.push_to_hub=false` was left out of the training command. | Add `--policy.push_to_hub=false`, or add `--policy.repo_id=${HF_ORG}/${RUN}` to push the result at the end of training. |
-| `Repo id must use alphanumeric chars ... '/vials_real_dry1'` | `HF_ORG` is empty: a new terminal or a reboot forgot the `export` line. | Run the four lines from "Before you start" again. |
+| `Repo id must use alphanumeric chars ... '/vials_aa_v1'` | `HF_ORG` is empty: a new terminal or a reboot forgot the `export` line. | Run the four lines from "Before you start" again. |
 | `The NVIDIA driver on your system is too old (found version 12090)` followed by training on the CPU | The GPU driver is older than 580; the PyTorch that LeRobot installs needs 580 or newer. | Update the driver (Ubuntu: `sudo apt install nvidia-driver-580-open`, then reboot) and check that `nvidia-smi` reports CUDA 13.0. |
 | `PermissionError: [Errno 13] Permission denied: 'outputs/train'` at the first checkpoint | The output folder belongs to root (it was created by the Docker container). | Use `--output_dir=${HOME}/vials/outputs/${RUN}` as in Step 1, or `sudo chown -R $USER:$USER outputs`. The training itself was fine; rerun it. |
 | `401` or `Repository Not Found` when the dataset is downloaded | No Hugging Face token on this computer, or the account is not a member of the organization. | `hf auth login` with a token of a member account; `hf auth whoami` must list the organization. |
